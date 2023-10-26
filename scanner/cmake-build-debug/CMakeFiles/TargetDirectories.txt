@@ -1,0 +1,3 @@
+C:/Users/moaya/OneDrive/Desktop/TinyC/scanner/cmake-build-debug/CMakeFiles/scanner.dir
+C:/Users/moaya/OneDrive/Desktop/TinyC/scanner/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/moaya/OneDrive/Desktop/TinyC/scanner/cmake-build-debug/CMakeFiles/rebuild_cache.dir
