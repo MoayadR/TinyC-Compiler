@@ -49,12 +49,12 @@ Token Scanner::getToken() { // Depend on FileContent
             c = this->fileContent[this->current];
         }
 
-        while(isDigit(c)) // detect numbers
+        while(isdigit(c)) // detect numbers
         {
             temp+=c;
             this->current++;
             c = this->fileContent[this->current];
-            if(!isDigit(c))
+            if(!isdigit(c))
             {
                 return Token(temp , Number);
             }
@@ -152,11 +152,6 @@ void Token::setType(tokenType type) {
     this->type = type;
 }
 
-bool isDigit(char c) {
-    if(int(c) >= 48 && int(c) <= 57)
-        return true;
-    return false;
-}
 
 
 int main() {

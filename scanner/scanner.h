@@ -4,7 +4,6 @@
 
 #ifndef SCANNER_SCANNER_H
 #define SCANNER_SCANNER_H
-#define LOOKAHEAD_BUFFER 6
 #include <vector>
 #include <unordered_map>
 
@@ -63,7 +62,6 @@ public:
     void setFileContent(const string& fileName);
 };
 
-bool isDigit(char c );
 
 
 #endif //SCANNER_SCANNER_H
