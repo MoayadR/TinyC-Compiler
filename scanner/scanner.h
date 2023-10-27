@@ -5,7 +5,6 @@
 #ifndef SCANNER_SCANNER_H
 #define SCANNER_SCANNER_H
 #define LOOKAHEAD_BUFFER 6
-#include <fstream>
 #include <vector>
 #include <unordered_map>
 
@@ -23,8 +22,8 @@ typedef enum tokenType {
  SubToken , AssignToken ,
  LTToken , ETToken ,
  GTToken , OpenningBracketsToken,
- ClosingBracketsToken , OpenningCurlyBracketsToken,
- ClosingCurlyBracketsToken
+ ClosingBracketsToken, Number,
+ ID
 } tokenType;
 
 class Token{
@@ -52,18 +51,19 @@ private:
     unordered_map<string, tokenType>delimiters;
     string fileContent;
     int position; // error handling
+    int current = 0;
 
 public:
     Scanner();
     Scanner(const string& fileName);
     Token getToken();
     void generateListOfTokens();
-    tokenType getTokenType(const string value);
     void printListOfTokens();
-    void generateReserverWords();
+    void generateReservedWords();
     void setFileContent(const string& fileName);
-    bool lookAheadForDelimiters();
 };
+
+bool isDigit(char c );
 
 
 #endif //SCANNER_SCANNER_H

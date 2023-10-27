@@ -1,67 +1,96 @@
 #include <iostream>
 #include "scanner.h"
+#include <fstream>
 #include <sstream>
 
 using namespace std;
 
 Scanner::Scanner() {
-    this->generateReserverWords();
+    this->generateReservedWords();
+    this->current = 0;
+    this->position= 0;
 }
 
 Scanner::Scanner(const string &fileName) {
     this->setFileContent(fileName);
-    this->generateReserverWords();
+    this->generateReservedWords();
     this->generateListOfTokens();
+    this->current = 0;
+    this->position= 0;
 }
 
 void Scanner::generateListOfTokens() {
     while (true)
     {
         Token temp = this->getToken();
+        this->listOfTokens.push_back(temp);
         if (temp.getType() == EndOfFile) // stopping Condition;
         {
             break;
         }
-        this->listOfTokens.push_back(temp);
     }
 }
 
 Token Scanner::getToken() { // Depend on FileContent
     string temp = "";
     char c;
-    while(fileHandler >> noskipws >> c)
+    while(this->current < this->fileContent.length())
     {
-        if (c == '{') // handling comments in TinyC
+        c = this->fileContent[this->current];
+
+        if(c == '{') // Skip Comments
         {
-            while(fileHandler>>noskipws>>c)
+            while(c != '}')
             {
-                if (c== '}')
-                {
-                    fileHandler>>noskipws>>c;
-                    break;
-                }
+                this->current++;
+                c = this->fileContent[this->current];
+            }
+            this->current++;
+            c = this->fileContent[this->current];
+        }
+
+        while(isDigit(c)) // detect numbers
+        {
+            temp+=c;
+            this->current++;
+            c = this->fileContent[this->current];
+            if(!isDigit(c))
+            {
+                return Token(temp , Number);
             }
         }
 
-        if (c == ' ' && temp.length() == 0)
-            continue;
-        else if (c == ' ')
-            return Token(temp , this->getTokenType(temp));
+        if(c == ' ' && temp.length()) // detect white space and split using it
+        {
+            return Token(temp,ID);
+        }
 
-        if(this->lookAheadForDelimiters() && temp.length())
-            return Token(temp , this->getTokenType(temp));
+        if(c!=' ' && c!= '\n' && c!= '\t') // filling temp and looking ahead for delimiters
+        {
+            if(((this->delimiters.find(string(1, c)) != this->delimiters.end()) || c==':' )&& temp.length()) // if char (single OP) was a delimiter
+            {
+                // := case
+                if(temp != ":" and c != '=')
+                    return Token(temp , ID);
+            }
+            temp+=c;
+        }
 
-        temp += c;
+        this->current++; // increments current
+        if(this->delimiters.find(temp) != this->delimiters.end()) // return delimiter as a token
+        {
+            return Token(temp , this->delimiters[temp]);
+        }
+
     }
-    if (temp.length())
-        return Token(temp , this->getTokenType(temp));
 
-    return Token("" , EndOfFile);
-}
+    if(this->current >= this->fileContent.length())
+    {
+        if (temp.length())
+            return Token(temp,ID);
 
-
-tokenType Scanner::getTokenType(const string value) { // detect the type of the token
-    return InvalidToken;
+        return Token(" " , EndOfFile);
+    }
 }
 
 void Scanner::printListOfTokens() {
@@ -71,7 +100,7 @@ void Scanner::printListOfTokens() {
     }
 }
 
-void Scanner::generateReserverWords() {
+void Scanner::generateReservedWords() {
     this->delimiters["read"] = InputToken;
     this->delimiters["write"] = OutputToken;
     this->delimiters[";"] = SemiColumnToken;
@@ -91,22 +120,12 @@ void Scanner::generateReserverWords() {
     this->delimiters[">"] = GTToken;
     this->delimiters["("] = OpenningBracketsToken;
     this->delimiters[")"] = ClosingBracketsToken;
-    this->delimiters["{"] = OpenningCurlyBracketsToken;
-    this->delimiters["}"] = ClosingCurlyBracketsToken;
 }
 
-bool Scanner::lookAheadForDelimiters() {
-    string temp = "";
-    char c ;
-    for(int i =0 ; i<6 ; i++)
-    {
-
-    }
-}
 
 void Scanner::setFileContent(const string &fileName) {
     fstream fileHandler(fileName);
-    std::stringstream buffer;
+    stringstream buffer;
     buffer << fileHandler.rdbuf();
     this->fileContent =  buffer.str();
     fileHandler.close();
@@ -133,9 +152,16 @@ void Token::setType(tokenType type) {
     this->type = type;
 }
 
+bool isDigit(char c) {
+    if(int(c) >= 48 && int(c) <= 57)
+        return true;
+    return false;
+}
+
 
 int main() {
     Scanner scanner("C:\\Users\\moaya\\OneDrive\\Desktop\\TinyC\\scanner\\scannerTest.txt");
     scanner.printListOfTokens();
     return 0;
 }
+
