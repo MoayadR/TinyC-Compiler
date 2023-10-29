@@ -12,6 +12,7 @@ using namespace std;
 typedef enum tokenType {
  EndOfFile ,
  InvalidToken ,
+ WhiteSpace,
  InputToken , OutputToken ,
  SemiColumnToken , IFToken ,
  ThenToken , ElseToken ,
@@ -49,7 +50,7 @@ private:
     vector<Token>listOfTokens;
     unordered_map<string, tokenType>delimiters;
     string fileContent;
-    int position; // error handling
+    int position = 0; // error handling
     int current = 0;
 
 public:
@@ -60,6 +61,7 @@ public:
     void printListOfTokens();
     void generateReservedWords();
     void setFileContent(const string& fileName);
+    void updatePositionLine(char c);
 };
 
 

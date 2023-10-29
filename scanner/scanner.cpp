@@ -37,6 +37,7 @@ Token Scanner::getToken() { // Depend on FileContent
     while(this->current < this->fileContent.length())
     {
         c = this->fileContent[this->current];
+        this->updatePositionLine(c);
 
         if(c == '{') // Skip Comments
         {
@@ -44,53 +45,66 @@ Token Scanner::getToken() { // Depend on FileContent
             {
                 this->current++;
                 c = this->fileContent[this->current];
+                this->updatePositionLine(c);
             }
             this->current++;
             c = this->fileContent[this->current];
+            this->updatePositionLine(c);
         }
 
-        while(isdigit(c)) // detect numbers
+
+        if(isspace(c))
         {
-            temp+=c;
             this->current++;
-            c = this->fileContent[this->current];
-            if(!isdigit(c))
+            return Token(" " , WhiteSpace);
+        }
+
+        if(isdigit(c)) // detect numbers
+        {
+            while(isdigit(c))
             {
-                return Token(temp , Number);
+                temp += c;
+                this->current++;
+                c = this->fileContent[this->current];
             }
+            return Token(temp , Number);
         }
 
-        if(c == ' ' && temp.length()) // detect white space and split using it
+        if(isalpha(c) || c == '_') // detect reservedWords or variables
         {
-            return Token(temp,ID);
-        }
-
-        if(c!=' ' && c!= '\n' && c!= '\t') // filling temp and looking ahead for delimiters
-        {
-            if(((this->delimiters.find(string(1, c)) != this->delimiters.end()) || c==':' )&& temp.length()) // if char (single OP) was a delimiter
+            while(isalnum(c))
             {
-                // := case
-                if(temp != ":" and c != '=')
-                    return Token(temp , ID);
+                temp += c;
+                this->current++;
+                c = this->fileContent[this->current];
             }
-            temp+=c;
+            if(this->delimiters.find(temp) != this->delimiters.end()) // checking if delimiter
+                return Token(temp , this->delimiters[temp]);
+            return Token(temp , ID);  // is ID then
         }
 
-        this->current++; // increments current
-        if(this->delimiters.find(temp) != this->delimiters.end()) // return delimiter as a token
+        if(ispunct(c))
         {
-            return Token(temp , this->delimiters[temp]);
+            while(ispunct(c))
+            {
+                temp += c;
+                this->current++;
+                c = this->fileContent[this->current];
+            }
+            if(this->delimiters.find(temp) != this->delimiters.end()) // checking if delimiter
+                return Token(temp , this->delimiters[temp]);
+
+            cout<<"Error Invalid Token at " << this->position<<endl; // error handling el 8laba
+            return Token(temp , InvalidToken); // then invalid punct
         }
 
+        this->current++;
+        cout<<"Error Invalid Token at " << this->position<<endl; // error handling el 8laba
+        return Token(string(1,c) , InvalidToken);
     }
 
     if(this->current >= this->fileContent.length())
-    {
-        if (temp.length())
-            return Token(temp,ID);
-
         return Token(" " , EndOfFile);
-    }
 }
 
 void Scanner::printListOfTokens() {
@@ -129,6 +143,13 @@ void Scanner::setFileContent(const string &fileName) {
     buffer << fileHandler.rdbuf();
     this->fileContent =  buffer.str();
     fileHandler.close();
+}
+
+void Scanner::updatePositionLine(char c) {
+    if(c == '\n')
+    {
+        this->position++;
+    }
 }
 
 
