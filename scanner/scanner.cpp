@@ -89,10 +89,12 @@ Token Scanner::getToken() { // Depend on FileContent
             {
                 temp += c;
                 this->current++;
+
+                if(this->delimiters.find(temp) != this->delimiters.end()) // checking if delimiter
+                    return Token(temp , this->delimiters[temp]);
+
                 c = this->fileContent[this->current];
             }
-            if(this->delimiters.find(temp) != this->delimiters.end()) // checking if delimiter
-                return Token(temp , this->delimiters[temp]);
 
             cout<<"Error Invalid Token at " << this->position<<endl; // error handling el 8laba
             return Token(temp , InvalidToken); // then invalid punct
