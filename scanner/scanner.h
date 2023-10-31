@@ -4,27 +4,12 @@
 
 #ifndef SCANNER_SCANNER_H
 #define SCANNER_SCANNER_H
+#include "globals.h"
 #include <vector>
 #include <unordered_map>
 
 using namespace std;
 
-typedef enum tokenType {
- EndOfFile ,
- InvalidToken ,
- WhiteSpace,
- InputToken , OutputToken ,
- SemiColumnToken , IFToken ,
- ThenToken , ElseToken ,
- EndToken , RepeatToken ,
- UntilToken , MULToken ,
- DIVToken , PlusToken ,
- SubToken , AssignToken ,
- LTToken , ETToken ,
- GTToken , OpenningBracketsToken,
- ClosingBracketsToken, Number,
- ID
-} tokenType;
 
 class Token{
 private:
@@ -63,7 +48,5 @@ public:
     void setFileContent(const string& fileName);
     void updatePositionLine(char c);
 };
-
-
 
 #endif //SCANNER_SCANNER_H

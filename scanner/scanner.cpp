@@ -72,7 +72,7 @@ Token Scanner::getToken() { // Depend on FileContent
 
         if(isalpha(c) || c == '_') // detect reservedWords or variables
         {
-            while(isalnum(c))
+            while(isalnum(c) || c == '_')
             {
                 temp += c;
                 this->current++;
@@ -178,8 +178,9 @@ void Token::setType(tokenType type) {
 
 
 int main() {
-    Scanner scanner("C:\\Users\\moaya\\OneDrive\\Desktop\\TinyC\\scanner\\scannerTest.txt");
+    Scanner scanner("..\\scannerTest.txt");
     scanner.printListOfTokens();
     return 0;
 }
+
 

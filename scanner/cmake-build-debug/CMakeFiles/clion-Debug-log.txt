@@ -1,4 +1,4 @@
-"C:\Users\moaya\AppData\Local\JetBrains\CLion 2023.2.2\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Users/moaya/AppData/Local/JetBrains/CLion 2023.2.2/bin/ninja/win/x64/ninja.exe" -G Ninja -S C:\Users\moaya\OneDrive\Desktop\TinyC\scanner -B C:\Users\moaya\OneDrive\Desktop\TinyC\scanner\cmake-build-debug
--- Configuring done (0.3s)
+"C:\Program Files\JetBrains\CLion 2023.2.2\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2023.2.2/bin/ninja/win/x64/ninja.exe" -G Ninja -S D:\Andrew\GitHub\TinyC-Compiler\scanner -B D:\Andrew\GitHub\TinyC-Compiler\scanner\cmake-build-debug
+-- Configuring done (0.0s)
 -- Generating done (0.0s)
--- Build files have been written to: C:/Users/moaya/OneDrive/Desktop/TinyC/scanner/cmake-build-debug
+-- Build files have been written to: D:/Andrew/GitHub/TinyC-Compiler/scanner/cmake-build-debug
