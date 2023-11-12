@@ -24,7 +24,7 @@ void Scanner::generateListOfTokens() {
     {
         Token temp = this->getToken();
         this->listOfTokens.push_back(temp);
-        if (temp.getType() == EndOfFile) // stopping Condition;
+        if (temp.getType() == ENDFILE) // stopping Condition;
         {
             break;
         }
@@ -37,7 +37,6 @@ Token Scanner::getToken() { // Depend on FileContent
     while(this->current < this->fileContent.length())
     {
         c = this->fileContent[this->current];
-        this->updatePositionLine(c);
 
         if(c == '{') // Skip Comments
         {
@@ -46,17 +45,21 @@ Token Scanner::getToken() { // Depend on FileContent
                 this->current++;
                 c = this->fileContent[this->current];
                 this->updatePositionLine(c);
-            }
+            } // c = }
             this->current++;
             c = this->fileContent[this->current];
-            this->updatePositionLine(c);
         }
 
-
+        if(c == '\n')
+        {
+            this->updatePositionLine(c);
+            this->current++;
+            continue;
+        }
         if(isspace(c))
         {
             this->current++;
-            return Token(" " , WhiteSpace);
+            return Token(" " , WHITESPACE , this->position);
         }
 
         if(isdigit(c)) // detect numbers
@@ -67,20 +70,20 @@ Token Scanner::getToken() { // Depend on FileContent
                 this->current++;
                 c = this->fileContent[this->current];
             }
-            return Token(temp , Number);
+            return Token(temp , NUM , this->position);
         }
 
         if(isalpha(c) || c == '_') // detect reservedWords or variables
         {
-            while(isalnum(c) || c == '_')
+            while(isalpha(c) || c == '_')
             {
                 temp += c;
                 this->current++;
                 c = this->fileContent[this->current];
             }
             if(this->delimiters.find(temp) != this->delimiters.end()) // checking if delimiter
-                return Token(temp , this->delimiters[temp]);
-            return Token(temp , ID);  // is ID then
+                return Token(temp , this->delimiters[temp] , this->position);
+            return Token(temp , ID , this->position);  // is ID then
         }
 
         if(ispunct(c))
@@ -91,51 +94,50 @@ Token Scanner::getToken() { // Depend on FileContent
                 this->current++;
 
                 if(this->delimiters.find(temp) != this->delimiters.end()) // checking if delimiter
-                    return Token(temp , this->delimiters[temp]);
+                    return Token(temp , this->delimiters[temp] , this->position);
 
                 c = this->fileContent[this->current];
             }
 
-            cout<<"Error Invalid Token at " << this->position<<endl; // error handling el 8laba
-            return Token(temp , InvalidToken); // then invalid punct
+            return Token(temp , ERROR , this->position); // then invalid punct
         }
 
         this->current++;
-        cout<<"Error Invalid Token at " << this->position<<endl; // error handling el 8laba
-        return Token(string(1,c) , InvalidToken);
+        return Token(string(1,c) , ERROR , this->position);
     }
 
     if(this->current >= this->fileContent.length())
-        return Token(" " , EndOfFile);
+        return Token(" " , ENDFILE ,this->position);
+    return Token(" " , ENDFILE ,this->position);
 }
 
 void Scanner::printListOfTokens() {
     for (auto token : this->listOfTokens)
     {
-        cout<<"Token Value: " << token.getValue() << " Token Type: " << token.getType()<<endl;
+        cout<<"[ "<<token.getLine()<<" ] "<< token.getValue() << " ( " << TokenTypeStr[token.getType()] << " )"<<endl;
     }
 }
 
 void Scanner::generateReservedWords() {
-    this->delimiters["read"] = InputToken;
-    this->delimiters["write"] = OutputToken;
-    this->delimiters[";"] = SemiColumnToken;
-    this->delimiters["if"] = IFToken;
-    this->delimiters["then"] = ThenToken;
-    this->delimiters["else"] = ElseToken;
-    this->delimiters["end"] = EndToken;
-    this->delimiters["repeat"] = RepeatToken;
-    this->delimiters["until"] = UntilToken;
-    this->delimiters["*"] = MULToken;
-    this->delimiters["/"] = DIVToken;
-    this->delimiters["+"] = PlusToken;
-    this->delimiters["-"] = SubToken;
-    this->delimiters[":="] = AssignToken;
-    this->delimiters["<"] = LTToken;
-    this->delimiters["="] = ETToken;
-    this->delimiters[">"] = GTToken;
-    this->delimiters["("] = OpenningBracketsToken;
-    this->delimiters[")"] = ClosingBracketsToken;
+    this->delimiters["read"] = READ;
+    this->delimiters["write"] = WRITE;
+    this->delimiters[";"] = SEMI_COLON;
+    this->delimiters["if"] = IF;
+    this->delimiters["then"] = THEN;
+    this->delimiters["else"] = ELSE;
+    this->delimiters["end"] = END;
+    this->delimiters["repeat"] = REPEAT;
+    this->delimiters["until"] = UNTIL;
+    this->delimiters["*"] = TIMES;
+    this->delimiters["/"] = DIVIDE;
+    this->delimiters["+"] = PLUS;
+    this->delimiters["-"] = MINUS;
+    this->delimiters[":="] = ASSIGN;
+    this->delimiters["<"] = LESS_THAN;
+    this->delimiters["="] = EQUAL;
+    this->delimiters[">"] = GREAT_THAN;
+    this->delimiters["("] = LEFT_PAREN;
+    this->delimiters[")"] = RIGHT_PAREN;
 }
 
 
@@ -155,7 +157,7 @@ void Scanner::updatePositionLine(char c) {
 }
 
 
-Token::Token(const string &value, tokenType type) : value(value), type(type) {}
+Token::Token(const string &value, tokenType type , int line) : value(value), type(type) , line(line) {}
 
 Token::Token() {}
 
@@ -175,6 +177,9 @@ void Token::setType(tokenType type) {
     this->type = type;
 }
 
+int Token::getLine() const {
+    return line;
+}
 
 
 int main() {

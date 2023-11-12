@@ -15,9 +15,10 @@ class Token{
 private:
     string value;
     tokenType type;
+    int line;
 public:
     Token();
-    Token(const string &value, tokenType type);
+    Token(const string &value, tokenType type , int line);
 
     void setValue(const string &value);
 
@@ -25,6 +26,8 @@ public:
 
     const string &getValue() const;
     tokenType getType() const;
+
+    int getLine() const;
 
 
 };
@@ -35,7 +38,7 @@ private:
     vector<Token>listOfTokens;
     unordered_map<string, tokenType>delimiters;
     string fileContent;
-    int position = 0; // error handling
+    int position = 1;// error handling
     int current = 0;
 
 public:

@@ -6,20 +6,27 @@
 #define SCANNER_GLOBALS_H
 
 typedef enum tokenType {
-    EndOfFile ,
-    InvalidToken ,
-    WhiteSpace,
-    InputToken , OutputToken ,
-    SemiColumnToken , IFToken ,
-    ThenToken , ElseToken ,
-    EndToken , RepeatToken ,
-    UntilToken , MULToken ,
-    DIVToken , PlusToken ,
-    SubToken , AssignToken ,
-    LTToken , ETToken ,
-    GTToken , OpenningBracketsToken,
-    ClosingBracketsToken, Number,
-    ID
+    IF, THEN, ELSE, END, REPEAT, UNTIL, READ, WRITE,
+    ASSIGN, EQUAL, LESS_THAN, GREAT_THAN,
+    PLUS, MINUS, TIMES, DIVIDE,
+    SEMI_COLON,
+    LEFT_PAREN, RIGHT_PAREN,
+    ID, NUM,
+    ENDFILE, ERROR,WHITESPACE
 } tokenType;
+
+
+// Used for debugging only /////////////////////////////////////////////////////////
+const char* TokenTypeStr[]=
+        {
+                "If", "Then", "Else", "End", "Repeat", "Until", "Read", "Write",
+                "Assign", "Equal", "LessThan","GreatThan",
+                "Plus", "Minus", "Times", "Divide",
+                "SemiColon",
+                "LeftParen", "RightParen",
+                "ID", "Num",
+                "EndFile", "Error" , "WhiteSpace"
+        };
+
 
 #endif //SCANNER_GLOBALS_H

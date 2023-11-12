@@ -1,0 +1,3 @@
+"C:\Users\moaya\AppData\Local\JetBrains\CLion 2023.2.2\bin\cmake\win\x64\bin\cmake.exe" -E rm -f CMakeFiles\scanner.dir/objects.a
+C:\Users\moaya\AppData\Local\JETBRA~1\CLION2~1.2\bin\mingw\bin\ar.exe qc CMakeFiles\scanner.dir/objects.a @CMakeFiles\scanner.dir\objects1.rsp
+C:\Users\moaya\AppData\Local\JETBRA~1\CLION2~1.2\bin\mingw\bin\G__~1.EXE -g -Wl,--whole-archive CMakeFiles\scanner.dir/objects.a -Wl,--no-whole-archive -o scanner.exe -Wl,--out-implib,libscanner.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\scanner.dir\linkLibs.rsp

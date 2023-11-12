@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "D:/Andrew/GitHub/TinyC-Compiler/scanner/cmake-build-debug",
-		"source" : "D:/Andrew/GitHub/TinyC-Compiler/scanner"
+		"build" : "C:/Users/moaya/OneDrive/Desktop/TinyC/TinyC-Compiler/scanner/cmake-build-debug",
+		"source" : "C:/Users/moaya/OneDrive/Desktop/TinyC/TinyC-Compiler/scanner"
 	},
 	"version" : 
 	{
