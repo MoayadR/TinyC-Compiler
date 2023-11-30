@@ -1,0 +1,22 @@
+# ninja log v5
+5	569	7230551584249320	CMakeFiles/TinyC_Compiler.dir/parser.cpp.obj	23b76e86b14e77f8
+4	1020	7230559031171351	CMakeFiles/TinyC_Compiler.dir/main.cpp.obj	5beeac2a84b0c897
+12	1329	7230559034225020	CMakeFiles/TinyC_Compiler.dir/scanner.cpp.obj	30b27b3d86e605fe
+1330	1488	7230559035810772	TinyC_Compiler.exe	b87b0305065bc528
+1	136	7230562464734547	build.ninja	6658fde29808b9aa
+31	1081	7230565442415705	CMakeFiles/TinyC_Compiler.dir/parser.cpp.obj	23b76e86b14e77f8
+9	1175	7230565443356584	CMakeFiles/TinyC_Compiler.dir/main.cpp.obj	5beeac2a84b0c897
+20	1527	7230565446856476	CMakeFiles/TinyC_Compiler.dir/scanner.cpp.obj	30b27b3d86e605fe
+1527	1701	7230565448580483	TinyC_Compiler.exe	e222249cc612fd79
+5	816	7230565531506408	CMakeFiles/TinyC_Compiler.dir/main.cpp.obj	5beeac2a84b0c897
+817	990	7230565533204048	TinyC_Compiler.exe	e222249cc612fd79
+6	707	7230566201169525	CMakeFiles/TinyC_Compiler.dir/parser.cpp.obj	23b76e86b14e77f8
+708	880	7230566202856195	TinyC_Compiler.exe	e222249cc612fd79
+22	1107	7230567565478243	CMakeFiles/TinyC_Compiler.dir/parser.cpp.obj	23b76e86b14e77f8
+5	1263	7230567567042537	CMakeFiles/TinyC_Compiler.dir/main.cpp.obj	5beeac2a84b0c897
+14	1552	7230567569910531	CMakeFiles/TinyC_Compiler.dir/scanner.cpp.obj	30b27b3d86e605fe
+1553	1730	7230567571612042	TinyC_Compiler.exe	e222249cc612fd79
+14	991	7230569832610086	CMakeFiles/TinyC_Compiler.dir/parser.cpp.obj	23b76e86b14e77f8
+5	1090	7230569833584674	CMakeFiles/TinyC_Compiler.dir/main.cpp.obj	5beeac2a84b0c897
+25	1440	7230569837097898	CMakeFiles/TinyC_Compiler.dir/scanner.cpp.obj	30b27b3d86e605fe
+1440	1627	7230569838929482	TinyC_Compiler.exe	e222249cc612fd79

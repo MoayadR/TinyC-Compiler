@@ -1,0 +1,3 @@
+C:/Users/moaya/OneDrive/Desktop/TinyC/TinyC-Compiler/cmake-build-debug/CMakeFiles/TinyC_Compiler.dir
+C:/Users/moaya/OneDrive/Desktop/TinyC/TinyC-Compiler/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/moaya/OneDrive/Desktop/TinyC/TinyC-Compiler/cmake-build-debug/CMakeFiles/rebuild_cache.dir
