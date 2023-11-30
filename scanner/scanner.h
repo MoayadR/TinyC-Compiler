@@ -46,7 +46,7 @@ public:
     Scanner(const string& fileName);
     Token getToken();
     void generateListOfTokens();
-    void printListOfTokens();
+    void outputListOfTokens();
     void generateReservedWords();
     void setFileContent(const string& fileName);
     void updatePositionLine(char c);

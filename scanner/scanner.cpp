@@ -111,11 +111,14 @@ Token Scanner::getToken() { // Depend on FileContent
     return Token(" " , ENDFILE ,this->position);
 }
 
-void Scanner::printListOfTokens() {
-    for (auto token : this->listOfTokens)
+void Scanner::outputListOfTokens() {
+    fstream output("..\\output.txt" , ios::out);
+
+    for (const auto& token : this->listOfTokens)
     {
-        cout<<"[ "<<token.getLine()<<" ] "<< token.getValue() << " ( " << TokenTypeStr[token.getType()] << " )"<<endl;
+        output<<"[ "<<token.getLine()<<" ] "<< token.getValue() << " ( " << TokenTypeStr[token.getType()] << " )"<<'\n';
     }
+    output.close();
 }
 
 void Scanner::generateReservedWords() {
@@ -183,8 +186,8 @@ int Token::getLine() const {
 
 
 int main() {
-    Scanner scanner("..\\scannerTest.txt");
-    scanner.printListOfTokens();
+    Scanner scanner("..\\input.txt");
+    scanner.outputListOfTokens();
     return 0;
 }
 
