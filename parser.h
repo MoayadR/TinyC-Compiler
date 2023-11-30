@@ -7,10 +7,16 @@
 class Parser {
 private:
     Scanner scanner;
+    Token currentToken;
 public:
     Parser();
     void PrintTree(TreeNode* node, int sh=0);
-
+    TreeNode* newexpr();
+    TreeNode* factor();
+    TreeNode* term();
+    TreeNode* mathexpr();
+    TreeNode* expr();
+    TreeNode* writestmt();
 };
 
 ////////////////////////////////////////////////////////////////////////////////////

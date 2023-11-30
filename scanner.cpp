@@ -11,7 +11,7 @@
 Scanner::Scanner() {
     this->generateReservedWords();
     this->current = 0;
-    this->position= 0;
+    this->position= 1;
 }
 
 Scanner::Scanner(const string &fileName) {
@@ -19,7 +19,7 @@ Scanner::Scanner(const string &fileName) {
     this->generateReservedWords();
 //    this->generateListOfTokens();
     this->current = 0;
-    this->position= 0;
+    this->position= 1;
 }
 
 void Scanner::generateListOfTokens() {
@@ -62,7 +62,7 @@ Token Scanner::getToken() { // Depend on FileContent
         if(isspace(c))
         {
             this->current++;
-            return Token(" " , WHITESPACE , this->position);
+            continue;
         }
 
         if(isdigit(c)) // detect numbers
@@ -160,6 +160,15 @@ void Scanner::updatePositionLine(char c) {
     {
         this->position++;
     }
+}
+
+Token Scanner::getWithoutConsumtion() {
+    int tempCurrent = this->current;
+    int tempPos = this->position;
+    Token token = getToken();
+    this->current = tempCurrent;
+    this->position = tempPos;
+    return token;
 }
 
 

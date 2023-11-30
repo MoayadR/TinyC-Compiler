@@ -12,7 +12,7 @@ typedef enum tokenType {
     SEMI_COLON,
     LEFT_PAREN, RIGHT_PAREN,
     ID, NUM,
-    ENDFILE, ERROR,WHITESPACE
+    ENDFILE, ERROR,WHITESPACE , POWER
 } tokenType;
 
 const std::string TokenTypeStr[]=
@@ -23,7 +23,7 @@ const std::string TokenTypeStr[]=
                 "SemiColon",
                 "LeftParen", "RightParen",
                 "ID", "Num",
-                "EndFile", "Error" , "WhiteSpace"
+                "EndFile", "Error" , "WhiteSpace" , "POWER"
         };
 
 typedef enum NodeKind{
@@ -55,7 +55,8 @@ struct TreeNode
 
     NodeKind node_kind;
 
-    union{tokenType oper; int num; char* id;}; // defined for expression/int/identifier only
+
+    union{tokenType oper; int num;std::string id;}; // defined for expression/int/identifier only
     ExprDataType expr_data_type; // defined for expression/int/identifier only
 
     int line_num;
@@ -63,10 +64,6 @@ struct TreeNode
     TreeNode() {int i; for(i=0;i<MAX_CHILDREN;i++) child[i]=0; sibling=0; expr_data_type=VOID;}
 };
 
-//struct ParseInfo
-//{
-//    Token next_token;
-//};
 
 
 #endif // TINYC_COMPILER_GLOBALS_H

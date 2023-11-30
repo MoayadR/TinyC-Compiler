@@ -46,11 +46,13 @@ public:
     Scanner();
     Scanner(const string& fileName);
     Token getToken();
+    Token getWithoutConsumtion();
     void generateListOfTokens();
     void outputListOfTokens();
     void generateReservedWords();
     void setFileContent(const string& fileName);
     void updatePositionLine(char c);
 };
+
 
 #endif //TINYC_COMPILER_SCANNER_H
