@@ -55,8 +55,8 @@ struct TreeNode
 
     NodeKind node_kind;
 
-
-    union{tokenType oper; int num;std::string id;}; // defined for expression/int/identifier only
+    tokenType oper; int num;std::string id;
+    // defined for expression/int/identifier only
     ExprDataType expr_data_type; // defined for expression/int/identifier only
 
     int line_num;

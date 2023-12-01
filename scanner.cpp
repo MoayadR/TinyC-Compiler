@@ -144,6 +144,8 @@ void Scanner::generateReservedWords() {
     this->delimiters[">"] = GREAT_THAN;
     this->delimiters["("] = LEFT_PAREN;
     this->delimiters[")"] = RIGHT_PAREN;
+    this->delimiters["^"] = POWER;
+
 }
 
 

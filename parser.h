@@ -17,6 +17,15 @@ public:
     TreeNode* mathexpr();
     TreeNode* expr();
     TreeNode* writestmt();
+    TreeNode* readstmt();
+    TreeNode* idNode();
+    TreeNode* assignstmt();
+    TreeNode* repeatstmt(); // test
+    TreeNode* untilNode();  // test
+    TreeNode* stmtseq();    // test
+    TreeNode* ifstmt();
+    TreeNode* stmt();
+    TreeNode* program();
 };
 
 ////////////////////////////////////////////////////////////////////////////////////
