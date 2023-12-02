@@ -29,11 +29,13 @@ TreeNode *Parser::newexpr() { // error handling
     this->currentToken = this->scanner.getWithoutConsumtion();
 
     switch (this->currentToken.getType()) {
-        case LEFT_PAREN: // mathexpr  to be continued
+        case LEFT_PAREN:
             this->scanner.getToken();
             root = new TreeNode();
-
-            this->scanner.getToken();
+            root = this->mathexpr();
+            this->currentToken = this->scanner.getToken();
+            if(this->currentToken.getType() != RIGHT_PAREN) // error handling
+                cout<<"ERROR"<<endl;
             break;
         case NUM:
             root = new TreeNode();
