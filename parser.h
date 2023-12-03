@@ -26,6 +26,7 @@ public:
     TreeNode* ifstmt();
     TreeNode* stmt();
     TreeNode* program();
+    void checkNull(TreeNode* node);
 };
 
 ////////////////////////////////////////////////////////////////////////////////////

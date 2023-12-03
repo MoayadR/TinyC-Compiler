@@ -25,7 +25,7 @@ void Parser::PrintTree(TreeNode *node, int sh) {
 }
 
 TreeNode *Parser::newexpr() { // error handling
-    TreeNode* root;
+    TreeNode* root = nullptr;
     this->currentToken = this->scanner.getWithoutConsumtion();
 
     switch (this->currentToken.getType()) {
@@ -55,7 +55,7 @@ TreeNode *Parser::newexpr() { // error handling
         default:
             break;
     }
-
+    this->checkNull(root);
     return root;
 }
 
@@ -75,8 +75,7 @@ TreeNode *Parser::factor() { // error handling
 
         TreeNode *right = factor();
 
-        if(right == nullptr)
-            cout<<"Error at Right Tree"<<endl;
+        this->checkNull(right);
 
         root->child[1] = right;
         return root;
@@ -88,7 +87,7 @@ TreeNode *Parser::factor() { // error handling
 TreeNode *Parser::term() { // error handling
     TreeNode* left = factor();
     this->currentToken = this->scanner.getWithoutConsumtion();
-    TreeNode* root;
+    TreeNode* root = nullptr;
 
     while(this-> currentToken.getType() == DIVIDE || this-> currentToken.getType() == TIMES)
     {
@@ -102,6 +101,9 @@ TreeNode *Parser::term() { // error handling
 
         root->child[0] = left;
         root->child[1] = this->factor();
+
+        this->checkNull(root->child[1]);
+
         left = root;
         this->currentToken = this->scanner.getWithoutConsumtion();
     }
@@ -112,7 +114,7 @@ TreeNode *Parser::term() { // error handling
 TreeNode *Parser::mathexpr() { // error handling
     TreeNode* left = this->term();
     this->currentToken = this->scanner.getWithoutConsumtion();
-    TreeNode* root;
+    TreeNode* root = nullptr;
     while(currentToken.getType() == PLUS || currentToken.getType() == MINUS)
     {
         this->currentToken = this->scanner.getToken();
@@ -126,6 +128,9 @@ TreeNode *Parser::mathexpr() { // error handling
 
         root->child[0] = left;
         root->child[1] = this->term();
+
+        this->checkNull(root->child[1]);
+
         left = root;
 
         this->currentToken = this->scanner.getWithoutConsumtion();
@@ -137,7 +142,7 @@ TreeNode *Parser::mathexpr() { // error handling
 TreeNode *Parser::expr() {
     TreeNode* left = this->mathexpr();
     this->currentToken = this->scanner.getWithoutConsumtion();
-    TreeNode* root;
+    TreeNode* root = nullptr;
     if(currentToken.getType() == LESS_THAN || currentToken.getType() == EQUAL) {
         this->scanner.getToken();
         root = new TreeNode();
@@ -150,13 +155,17 @@ TreeNode *Parser::expr() {
 
         root->child[0] = left;
         root->child[1] = this->mathexpr();
+
+        this->checkNull(root->child[1]);
+
+
         left = root;
     }
     return left;
 }
 
 TreeNode *Parser::writestmt() {
-    TreeNode* root;
+    TreeNode* root = nullptr;
     this->currentToken = this->scanner.getWithoutConsumtion();
     if(this->currentToken.getType() == WRITE)
     {
@@ -166,12 +175,13 @@ TreeNode *Parser::writestmt() {
         root->oper = WRITE;
 
         root->child[0] = this->expr();
+        this->checkNull(root->child[0]);
     }
     return root;
 }
 
 TreeNode *Parser::idNode() {
-    TreeNode* root;
+    TreeNode* root = nullptr;
     this->currentToken = this->scanner.getWithoutConsumtion();
     if (this->currentToken.getType() == ID)
     {
@@ -185,7 +195,7 @@ TreeNode *Parser::idNode() {
 }
 
 TreeNode *Parser::readstmt() {
-    TreeNode* root;
+    TreeNode* root = nullptr;
     this->currentToken = this->scanner.getWithoutConsumtion();
     if(this->currentToken.getType() == READ) {
         this->scanner.getToken();
@@ -193,13 +203,14 @@ TreeNode *Parser::readstmt() {
         root->node_kind = READ_NODE;
         root->id = this->currentToken.getValue();
         root->child[0] = this->idNode();
+        this->checkNull(root->child[0]);
     }
     return root;
 }
 
 TreeNode *Parser::assignstmt() {
-    TreeNode* root;
-    TreeNode* right;
+    TreeNode* root = nullptr;
+    TreeNode* right = nullptr;
     TreeNode* left = this->idNode();
 
     this->currentToken = this->scanner.getWithoutConsumtion();
@@ -212,6 +223,8 @@ TreeNode *Parser::assignstmt() {
 
         right = this->expr();
 
+        this->checkNull(right);
+
         root->child[0] = left;
         root->child[1] = right;
     }
@@ -219,7 +232,7 @@ TreeNode *Parser::assignstmt() {
 }
 
 TreeNode *Parser::repeatstmt() {
-    TreeNode* root;
+    TreeNode* root = nullptr;
     this->currentToken = this->scanner.getWithoutConsumtion();
     if (currentToken.getType() == REPEAT)
     {
@@ -228,16 +241,20 @@ TreeNode *Parser::repeatstmt() {
         root->node_kind = REPEAT_NODE;
 
         root->child[0] = this->stmtseq();
+        this->checkNull(root->child[0]);
         root->child[1] = this->untilNode();
+        this->checkNull(root->child[1]);
         root->child[2] = this->expr();
+        this->checkNull(root->child[2]);
 
     }
     return root;
 }
 
 TreeNode *Parser::stmtseq(){
-    TreeNode* root, *left, *right;
+    TreeNode* root = nullptr, *left = nullptr, *right = nullptr;
     left = this->stmt();
+    this->checkNull(left);
     this->currentToken = this->scanner.getWithoutConsumtion();
     while(currentToken.getType() == SEMI_COLON)
     {
@@ -247,6 +264,8 @@ TreeNode *Parser::stmtseq(){
         root->oper = SEMI_COLON;
 
         right = this->stmt();
+        this->checkNull(right);
+
 
         root->child[0] = left;
         root->child[1] = right;
@@ -258,7 +277,7 @@ TreeNode *Parser::stmtseq(){
 }
 
 TreeNode *Parser::untilNode() {
-    TreeNode* root;
+    TreeNode* root = nullptr;
     this->currentToken = this->scanner.getWithoutConsumtion();
     if(currentToken.getType() == UNTIL)
     {
@@ -271,7 +290,7 @@ TreeNode *Parser::untilNode() {
 }
 
 TreeNode *Parser::ifstmt() {
-    TreeNode* root ;
+    TreeNode* root = nullptr ;
     this->currentToken = this->scanner.getWithoutConsumtion();
     if(currentToken.getType() == IF)
     {
@@ -280,15 +299,19 @@ TreeNode *Parser::ifstmt() {
         root->node_kind = IF_NODE;
 
         root->child[0] = this->expr();
+        this->checkNull(root->child[0]);
+
 
         this->currentToken = this->scanner.getWithoutConsumtion();
         if(currentToken.getType() != THEN) // Error Handling
         {
-            cout << "err then";
+            cout << "ERROR";
         }
         this->scanner.getToken();
 
         root->child[1] = this->stmtseq();
+        this->checkNull(root->child[1]);
+
 
         this->currentToken = this->scanner.getWithoutConsumtion();
         if(currentToken.getType() == ELSE) // Error Handling
@@ -298,12 +321,14 @@ TreeNode *Parser::ifstmt() {
             root->child[2]->oper = ELSE;
             this->scanner.getToken();
             root->child[2]->child[0] = this->stmtseq();
+            this->checkNull(root->child[2]->child[0]);
+
         }
 
         this->currentToken = this->scanner.getWithoutConsumtion();
         if(currentToken.getType() != END) // error handling
         {
-            cout << "err end";
+            cout << "ERROR";
         }
         this->scanner.getToken();
 
@@ -312,7 +337,7 @@ TreeNode *Parser::ifstmt() {
 }
 
 TreeNode *Parser::stmt() {
-    TreeNode* root;
+    TreeNode* root = nullptr;
 
     this->currentToken = this->scanner.getWithoutConsumtion();
     switch(currentToken.getType())
@@ -336,11 +361,18 @@ TreeNode *Parser::stmt() {
             break;
     }
 
+    this->checkNull(root);
+
     return root;
 }
 
 TreeNode *Parser::program() {
     return stmtseq();
+}
+
+void Parser::checkNull(TreeNode *node) {
+    if(node == nullptr)
+        cout<<"ERROR"<<endl;
 }
 
 
