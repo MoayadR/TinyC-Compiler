@@ -1,13 +1,13 @@
-
 #ifndef TINYC_COMPILER_PARSER_H
 #define TINYC_COMPILER_PARSER_H
-
+#include "symbolTable.h"
 #include "scanner.h"
 
 class Parser {
 private:
     Scanner scanner;
     Token currentToken;
+    SymbolTable symbolTable;
 public:
     Parser();
     void PrintTree(TreeNode* node, int sh=0);
@@ -27,6 +27,12 @@ public:
     TreeNode* stmt();
     TreeNode* program();
     void checkNull(TreeNode* node);
+    void printSymbolTable();
+    void codeGeneration(TreeNode* root);
+
+    bool evaluate(TreeNode *root);
+    int calculateSubTree(TreeNode* root);
+
 };
 
 ////////////////////////////////////////////////////////////////////////////////////
@@ -45,6 +51,5 @@ public:
 // term -> factor { (*|/) factor }    left associative
 // factor -> newexpr { ^ newexpr }    right associative
 // newexpr -> ( mathexpr ) | number | identifier
-
 
 #endif //TINYC_COMPILER_PARSER_H

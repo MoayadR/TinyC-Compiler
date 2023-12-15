@@ -42,7 +42,7 @@ rule CUSTOM_COMMAND
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = "C:\Users\moaya\AppData\Local\JetBrains\CLion 2023.2.2\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\Users\moaya\OneDrive\Desktop\TinyC\TinyC-Compiler -BC:\Users\moaya\OneDrive\Desktop\TinyC\TinyC-Compiler\cmake-build-debug
+  command = "C:\Users\moaya\AppData\Local\JetBrains\CLion 2023.2.2\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -S"C:\Users\moaya\OneDrive\Desktop\Code Gen\TinyC-Compiler" -B"C:\Users\moaya\OneDrive\Desktop\Code Gen\TinyC-Compiler\cmake-build-debug"
   description = Re-running CMake...
   generator = 1
 

@@ -1,16 +1,12 @@
 
 #ifndef TINYC_COMPILER_SCANNER_H
 #define TINYC_COMPILER_SCANNER_H
-
+#include "globals.h"
 #include <string>
 #include <vector>
 #include <unordered_map>
-#include "globals.h"
-
 
 using namespace std;
-
-
 
 class Token{
 private:

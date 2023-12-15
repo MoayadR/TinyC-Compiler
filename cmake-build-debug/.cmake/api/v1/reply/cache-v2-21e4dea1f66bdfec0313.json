@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/moaya/OneDrive/Desktop/TinyC/TinyC-Compiler/cmake-build-debug"
+			"value" : "c:/Users/moaya/OneDrive/Desktop/Code Gen/TinyC-Compiler/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -575,7 +575,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/moaya/OneDrive/Desktop/TinyC/TinyC-Compiler/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "C:/Users/moaya/OneDrive/Desktop/Code Gen/TinyC-Compiler/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -647,7 +647,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/moaya/OneDrive/Desktop/TinyC/TinyC-Compiler"
+			"value" : "C:/Users/moaya/OneDrive/Desktop/Code Gen/TinyC-Compiler"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1263,7 +1263,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/moaya/OneDrive/Desktop/TinyC/TinyC-Compiler/cmake-build-debug"
+			"value" : "C:/Users/moaya/OneDrive/Desktop/Code Gen/TinyC-Compiler/cmake-build-debug"
 		},
 		{
 			"name" : "TinyC_Compiler_IS_TOP_LEVEL",
@@ -1287,7 +1287,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/moaya/OneDrive/Desktop/TinyC/TinyC-Compiler"
+			"value" : "C:/Users/moaya/OneDrive/Desktop/Code Gen/TinyC-Compiler"
 		},
 		{
 			"name" : "_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED",

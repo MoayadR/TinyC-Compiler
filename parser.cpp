@@ -48,7 +48,9 @@ TreeNode *Parser::newexpr() { // error handling
         case ID:
             root = new TreeNode();
             this->scanner.getToken();
+            this->symbolTable.Insert(this->currentToken.getValue().c_str(), this->currentToken.getLine());
             root->node_kind = ID_NODE;
+            root->expr_data_type = INTEGER;
             root->id = this->currentToken.getValue();
             root->line_num = this->currentToken.getLine();
             break;
@@ -185,9 +187,11 @@ TreeNode *Parser::idNode() {
     this->currentToken = this->scanner.getWithoutConsumtion();
     if (this->currentToken.getType() == ID)
     {
+        this->symbolTable.Insert(this->currentToken.getValue().c_str(), this->currentToken.getLine());
         root = new TreeNode();
         this->scanner.getToken();
         root->node_kind = ID_NODE;
+        root->expr_data_type = INTEGER;
         root->id = this->currentToken.getValue();
         root->line_num = this->currentToken.getLine();
     }
@@ -219,6 +223,7 @@ TreeNode *Parser::assignstmt() {
         this->scanner.getToken();
         root = new TreeNode();
         root->node_kind = ASSIGN_NODE;
+        root->expr_data_type = INTEGER;
         root->id = this->currentToken.getValue();
 
         right = this->expr();
@@ -246,6 +251,10 @@ TreeNode *Parser::repeatstmt() {
         this->checkNull(root->child[1]);
         root->child[2] = this->expr();
         this->checkNull(root->child[2]);
+
+        // type checking boolean for expr node
+        if(root->child[2]->expr_data_type != BOOLEAN)
+            cout<<"Error, an \"until\" should be followed by a Boolean"<<endl;
 
     }
     return root;
@@ -299,6 +308,11 @@ TreeNode *Parser::ifstmt() {
         root->node_kind = IF_NODE;
 
         root->child[0] = this->expr();
+
+        // type checking for boolean expr
+        if(root->child[0]->expr_data_type != BOOLEAN)
+            cout<<"Error, an \"if\" should be followed by a Boolean"<<endl;
+
         this->checkNull(root->child[0]);
 
 
@@ -374,6 +388,103 @@ void Parser::checkNull(TreeNode *node) {
     if(node == nullptr)
         cout<<"ERROR"<<endl;
 }
+
+void Parser::printSymbolTable() {
+    this->symbolTable.Print();
+}
+
+void Parser::codeGeneration(TreeNode* root) {
+    if(root == nullptr)
+        return;
+    TreeNode* id;
+    VariableInfo* varInfo;
+    switch (root->node_kind) {
+        case IF_NODE:
+            if(this->evaluate(root->child[0]))
+            {
+                this->codeGeneration(root->child[1]);
+            }
+            else // else stmt
+            {
+                if(root->child[2] != nullptr && root->child[2]->child[0] != nullptr)
+                    this->codeGeneration(root->child[2]->child[0]);
+            }
+            break;
+        case READ_NODE:
+            id = root->child[0];
+            varInfo =  symbolTable.Find(id->id.c_str());
+            cout<<"Enter " <<varInfo->name<<':';
+            cin>>  varInfo->value;
+            break;
+        case WRITE_NODE:
+            id = root->child[0];
+            varInfo =  symbolTable.Find(id->id.c_str());
+            cout<<varInfo->name<<": "<<varInfo->value<<endl;
+            break;
+        case REPEAT_NODE:
+            while(!this->evaluate(root->child[2])) // until not condition true
+            {
+                this->codeGeneration(root->child[0]);
+            }
+            break;
+        case ASSIGN_NODE:
+            id = root->child[0];
+            varInfo =  symbolTable.Find(id->id.c_str());
+            varInfo->value = this->calculateSubTree(root->child[1]);
+            break;
+        default:
+            this->codeGeneration(root->child[0]);
+            this->codeGeneration(root->child[1]);
+            break;
+    }
+
+
+//    this->codeGeneration(root->child[2]);
+}
+
+int Parser::calculateSubTree(TreeNode *root) { // evaluate and get value
+    if (root->node_kind == ID_NODE) {
+        VariableInfo* varInfo =  symbolTable.Find(root->id.c_str());
+        return varInfo->value;
+    }
+    if(root->node_kind == NUM_NODE)
+        return root->num;
+
+    switch (root->oper) { // PLUS, MINUS, TIMES, DIVIDE,
+        case PLUS:
+            return this->calculateSubTree(root->child[0]) + this->calculateSubTree(root->child[1]);
+            break;
+        case MINUS:
+            return this->calculateSubTree(root->child[0]) - this->calculateSubTree(root->child[1]);
+            break;
+        case TIMES:
+            return this->calculateSubTree(root->child[0]) * this->calculateSubTree(root->child[1]);
+            break;
+        case DIVIDE:
+            return this->calculateSubTree(root->child[0]) / this->calculateSubTree(root->child[1]);
+            break;
+        default:
+            cout<<"ERROR DURING TREE Evaluation"<<endl;
+            return -1;
+    }
+}
+
+bool Parser::evaluate(TreeNode *root) {  // evaluate boolean
+    int left=calculateSubTree(root->child[0])   , right = calculateSubTree(root->child[1]);
+    switch (root->oper) { // EQUAL , LESS_THAN,
+        case EQUAL:
+            return left == right;
+            break;
+        case LESS_THAN:
+            return left < right;
+            break;
+        default:
+            cout << "ERROR DURING TREE Evaluation" << endl;
+            return 0;
+            break;
+    }
+}
+
 
 
 

@@ -1,9 +1,10 @@
 //
 // Created by moaya on 11/30/2023.
 //
-
 #ifndef TINYC_COMPILER_GLOBALS_H
 #define TINYC_COMPILER_GLOBALS_H
+#include <string>
+
 
 typedef enum tokenType {
     IF, THEN, ELSE, END, REPEAT, UNTIL, READ, WRITE,

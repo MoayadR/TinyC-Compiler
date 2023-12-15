@@ -1,7 +1,7 @@
+#include "scanner.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include "scanner.h"
 
 // Used for debugging only /////////////////////////////////////////////////////////
 

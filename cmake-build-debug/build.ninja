@@ -39,7 +39,7 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = C$:/Users/moaya/OneDrive/Desktop/TinyC/TinyC-Compiler/cmake-build-debug/
+cmake_ninja_workdir = C$:/Users/moaya/OneDrive/Desktop/Code$ Gen/TinyC-Compiler/cmake-build-debug/
 # =============================================================================
 # Object build statements for EXECUTABLE target TinyC_Compiler
 
@@ -49,20 +49,20 @@ cmake_ninja_workdir = C$:/Users/moaya/OneDrive/Desktop/TinyC/TinyC-Compiler/cmak
 
 build cmake_object_order_depends_target_TinyC_Compiler: phony || CMakeFiles/TinyC_Compiler.dir
 
-build CMakeFiles/TinyC_Compiler.dir/main.cpp.obj: CXX_COMPILER__TinyC_Compiler_unscanned_Debug C$:/Users/moaya/OneDrive/Desktop/TinyC/TinyC-Compiler/main.cpp || cmake_object_order_depends_target_TinyC_Compiler
-  DEP_FILE = CMakeFiles\TinyC_Compiler.dir\main.cpp.obj.d
-  FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\TinyC_Compiler.dir
-  OBJECT_FILE_DIR = CMakeFiles\TinyC_Compiler.dir
-
-build CMakeFiles/TinyC_Compiler.dir/scanner.cpp.obj: CXX_COMPILER__TinyC_Compiler_unscanned_Debug C$:/Users/moaya/OneDrive/Desktop/TinyC/TinyC-Compiler/scanner.cpp || cmake_object_order_depends_target_TinyC_Compiler
+build CMakeFiles/TinyC_Compiler.dir/scanner.cpp.obj: CXX_COMPILER__TinyC_Compiler_unscanned_Debug C$:/Users/moaya/OneDrive/Desktop/Code$ Gen/TinyC-Compiler/scanner.cpp || cmake_object_order_depends_target_TinyC_Compiler
   DEP_FILE = CMakeFiles\TinyC_Compiler.dir\scanner.cpp.obj.d
   FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\TinyC_Compiler.dir
   OBJECT_FILE_DIR = CMakeFiles\TinyC_Compiler.dir
 
-build CMakeFiles/TinyC_Compiler.dir/parser.cpp.obj: CXX_COMPILER__TinyC_Compiler_unscanned_Debug C$:/Users/moaya/OneDrive/Desktop/TinyC/TinyC-Compiler/parser.cpp || cmake_object_order_depends_target_TinyC_Compiler
+build CMakeFiles/TinyC_Compiler.dir/parser.cpp.obj: CXX_COMPILER__TinyC_Compiler_unscanned_Debug C$:/Users/moaya/OneDrive/Desktop/Code$ Gen/TinyC-Compiler/parser.cpp || cmake_object_order_depends_target_TinyC_Compiler
   DEP_FILE = CMakeFiles\TinyC_Compiler.dir\parser.cpp.obj.d
+  FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\TinyC_Compiler.dir
+  OBJECT_FILE_DIR = CMakeFiles\TinyC_Compiler.dir
+
+build CMakeFiles/TinyC_Compiler.dir/main.cpp.obj: CXX_COMPILER__TinyC_Compiler_unscanned_Debug C$:/Users/moaya/OneDrive/Desktop/Code$ Gen/TinyC-Compiler/main.cpp || cmake_object_order_depends_target_TinyC_Compiler
+  DEP_FILE = CMakeFiles\TinyC_Compiler.dir\main.cpp.obj.d
   FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\TinyC_Compiler.dir
   OBJECT_FILE_DIR = CMakeFiles\TinyC_Compiler.dir
@@ -75,7 +75,7 @@ build CMakeFiles/TinyC_Compiler.dir/parser.cpp.obj: CXX_COMPILER__TinyC_Compiler
 #############################################
 # Link the executable TinyC_Compiler.exe
 
-build TinyC_Compiler.exe: CXX_EXECUTABLE_LINKER__TinyC_Compiler_Debug CMakeFiles/TinyC_Compiler.dir/main.cpp.obj CMakeFiles/TinyC_Compiler.dir/scanner.cpp.obj CMakeFiles/TinyC_Compiler.dir/parser.cpp.obj
+build TinyC_Compiler.exe: CXX_EXECUTABLE_LINKER__TinyC_Compiler_Debug CMakeFiles/TinyC_Compiler.dir/scanner.cpp.obj CMakeFiles/TinyC_Compiler.dir/parser.cpp.obj CMakeFiles/TinyC_Compiler.dir/main.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\TinyC_Compiler.dir
@@ -90,7 +90,7 @@ build TinyC_Compiler.exe: CXX_EXECUTABLE_LINKER__TinyC_Compiler_Debug CMakeFiles
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\moaya\OneDrive\Desktop\TinyC\TinyC-Compiler\cmake-build-debug && "C:\Users\moaya\AppData\Local\JetBrains\CLion 2023.2.2\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = cmd.exe /C "cd /D "C:\Users\moaya\OneDrive\Desktop\Code Gen\TinyC-Compiler\cmake-build-debug" && "C:\Users\moaya\AppData\Local\JetBrains\CLion 2023.2.2\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -101,7 +101,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\moaya\OneDrive\Desktop\TinyC\TinyC-Compiler\cmake-build-debug && "C:\Users\moaya\AppData\Local\JetBrains\CLion 2023.2.2\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\Users\moaya\OneDrive\Desktop\TinyC\TinyC-Compiler -BC:\Users\moaya\OneDrive\Desktop\TinyC\TinyC-Compiler\cmake-build-debug"
+  COMMAND = cmd.exe /C "cd /D "C:\Users\moaya\OneDrive\Desktop\Code Gen\TinyC-Compiler\cmake-build-debug" && "C:\Users\moaya\AppData\Local\JetBrains\CLion 2023.2.2\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -S"C:\Users\moaya\OneDrive\Desktop\Code Gen\TinyC-Compiler" -B"C:\Users\moaya\OneDrive\Desktop\Code Gen\TinyC-Compiler\cmake-build-debug""
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -119,7 +119,7 @@ build TinyC_Compiler: phony TinyC_Compiler.exe
 # =============================================================================
 
 #############################################
-# Folder: C:/Users/moaya/OneDrive/Desktop/TinyC/TinyC-Compiler/cmake-build-debug
+# Folder: C:/Users/moaya/OneDrive/Desktop/Code Gen/TinyC-Compiler/cmake-build-debug
 
 build all: phony TinyC_Compiler.exe
 
@@ -130,14 +130,14 @@ build all: phony TinyC_Compiler.exe
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCInformation.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCXXInformation.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCommonLanguageInclude.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeGenericSystem.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeInitializeConfigs.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeLanguageInformation.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeRCInformation.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInformation.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInitialize.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU-C.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU-CXX.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-C.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-CXX.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-windres.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/WindowsPaths.cmake C$:/Users/moaya/OneDrive/Desktop/TinyC/TinyC-Compiler/CMakeLists.txt CMakeCache.txt CMakeFiles/3.26.4/CMakeCCompiler.cmake CMakeFiles/3.26.4/CMakeCXXCompiler.cmake CMakeFiles/3.26.4/CMakeRCCompiler.cmake CMakeFiles/3.26.4/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCInformation.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCXXInformation.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCommonLanguageInclude.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeGenericSystem.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeInitializeConfigs.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeLanguageInformation.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeRCInformation.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInformation.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInitialize.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU-C.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU-CXX.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-C.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-CXX.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-windres.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/WindowsPaths.cmake C$:/Users/moaya/OneDrive/Desktop/Code$ Gen/TinyC-Compiler/CMakeLists.txt CMakeCache.txt CMakeFiles/3.26.4/CMakeCCompiler.cmake CMakeFiles/3.26.4/CMakeCXXCompiler.cmake CMakeFiles/3.26.4/CMakeRCCompiler.cmake CMakeFiles/3.26.4/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCInformation.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCXXInformation.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCommonLanguageInclude.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeGenericSystem.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeInitializeConfigs.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeLanguageInformation.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeRCInformation.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInformation.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInitialize.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU-C.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU-CXX.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-C.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-CXX.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-windres.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/WindowsPaths.cmake C$:/Users/moaya/OneDrive/Desktop/TinyC/TinyC-Compiler/CMakeLists.txt CMakeCache.txt CMakeFiles/3.26.4/CMakeCCompiler.cmake CMakeFiles/3.26.4/CMakeCXXCompiler.cmake CMakeFiles/3.26.4/CMakeRCCompiler.cmake CMakeFiles/3.26.4/CMakeSystem.cmake: phony
+build C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCInformation.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCXXInformation.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCommonLanguageInclude.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeGenericSystem.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeInitializeConfigs.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeLanguageInformation.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeRCInformation.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInformation.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInitialize.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU-C.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU-CXX.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-C.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-CXX.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-windres.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows.cmake C$:/Users/moaya/AppData/Local/JetBrains/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/WindowsPaths.cmake C$:/Users/moaya/OneDrive/Desktop/Code$ Gen/TinyC-Compiler/CMakeLists.txt CMakeCache.txt CMakeFiles/3.26.4/CMakeCCompiler.cmake CMakeFiles/3.26.4/CMakeCXXCompiler.cmake CMakeFiles/3.26.4/CMakeRCCompiler.cmake CMakeFiles/3.26.4/CMakeSystem.cmake: phony
 
 
 #############################################
