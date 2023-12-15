@@ -1,5 +1,6 @@
 #include "parser.h"
 #include<iostream>
+#include <math.h>
 
 Parser::Parser() {
     this->scanner.setFileContent("..\\input.txt");
@@ -417,9 +418,16 @@ void Parser::codeGeneration(TreeNode* root) {
             cin>>  varInfo->value;
             break;
         case WRITE_NODE:
-            id = root->child[0];
-            varInfo =  symbolTable.Find(id->id.c_str());
-            cout<<varInfo->name<<": "<<varInfo->value<<endl;
+            if(root->child[0]->node_kind == ID_NODE)
+            {
+                id = root->child[0];
+                varInfo =  symbolTable.Find(id->id.c_str());
+                cout<<varInfo->name<<": "<<varInfo->value<<endl;
+            }
+            else
+            {
+                cout<<this->calculateSubTree(root->child[0])<<endl;
+            }
             break;
         case REPEAT_NODE:
             while(!this->evaluate(root->child[2])) // until not condition true
@@ -462,6 +470,9 @@ int Parser::calculateSubTree(TreeNode *root) { // evaluate and get value
             break;
         case DIVIDE:
             return this->calculateSubTree(root->child[0]) / this->calculateSubTree(root->child[1]);
+            break;
+        case POWER:
+            return pow(this->calculateSubTree(root->child[0]) , this->calculateSubTree(root->child[1]));
             break;
         default:
             cout<<"ERROR DURING TREE Evaluation"<<endl;
