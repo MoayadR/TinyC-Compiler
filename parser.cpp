@@ -430,10 +430,10 @@ void Parser::codeGeneration(TreeNode* root) {
             }
             break;
         case REPEAT_NODE:
-            while(!this->evaluate(root->child[2])) // until not condition true
-            {
+            do {
                 this->codeGeneration(root->child[0]);
             }
+            while(!this->evaluate(root->child[2])); // until not condition true
             break;
         case ASSIGN_NODE:
             id = root->child[0];
